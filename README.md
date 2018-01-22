@@ -1,5 +1,7 @@
 # CIFAR-10 チュートリアル [非公式]
 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/hiroyuki827/CIFAR-10_Tutorial/blob/master/LICENSE)
+
 ## はじめに
 このノートでは、私がRWTH Aachen University (アーヘン工科大学) の夏学期の講義「Deep Learning in Physics Research」で学んだ[CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html)の分類問題について説明しています。コード自体が長いため、インタラクティブ形式にまとめていますが、最後に全体のコードを一括に書いています。
 
@@ -13,7 +15,7 @@
 ※いくつか勉強不足の点があるので、間違いを見つけられた場合はご指摘いただけると嬉しいです。issueページにて受け付けております。
 
 ## 更新履歴
-- 2018/01/22: `dlipr`を新たに`dlt`とリネームし、PyPIへ登録しました。これについては[dltのリポジトリ](https://github.com/hiroyuki827/deep_learning_tools)からどうぞ。
+- 2018/01/22: `dlipr`を新たに`dlt`とリネームし、PyPIへ登録しました。`pip install dlt`でダウンロードできます。パッケージについては[dltのリポジトリ](https://github.com/hiroyuki827/deep_learning_tools)からどうぞ。
 - 2018/01/18: dliprパッケージで使われている`np.histogram2d`にてエラーが発生しているため、confusion matrixに関する記述を削除しました。
 
 ## <u>動作環境</u>
@@ -23,9 +25,6 @@
 - Keras
 - Tensorflow 1.4.1以上
 - dlt
-
-**準備**
-`pip install dlt`でダウンロードできます。
 
 ## <u>参考文献</u>:
 - 「ゼロから作るDeep Learning」(斎藤 康毅著）
