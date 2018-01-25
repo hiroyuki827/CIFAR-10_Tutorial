@@ -15,15 +15,13 @@
 ※いくつか勉強不足の点があるので、間違いを見つけられた場合はご指摘いただけると嬉しいです。issueページにて受け付けております。
 
 ## 更新履歴
+- 2018/01/25: `dlt`パッケージのアップデートに伴い、記事を更新しました。
 - 2018/01/22: `dlipr`を新たに`dlt`とリネームし、PyPIへ登録しました。`pip install dlt`でダウンロードできます。パッケージについては[dltのリポジトリ](https://github.com/hiroyuki827/deep_learning_tools)からどうぞ。
 - 2018/01/18: dliprパッケージで使われている`np.histogram2d`にてエラーが発生しているため、confusion matrixに関する記述を削除しました。
 
 ## <u>動作環境</u>
 
-- Python 3.0以上
-- GTX 1080 GPU with 8GB memory (パワーがあればそれでいい)
-- Keras
-- Tensorflow 1.4.1以上
+- Python3以上
 - dlt
 
 ## <u>参考文献</u>:

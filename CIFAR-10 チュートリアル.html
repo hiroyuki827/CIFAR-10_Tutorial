@@ -11839,7 +11839,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;1.13.3&#39;</pre>
+<pre>&#39;1.14.0&#39;</pre>
 </div>
 
 </div>
@@ -11873,7 +11873,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;2.0.2&#39;</pre>
+<pre>&#39;2.1.2&#39;</pre>
 </div>
 
 </div>
@@ -11907,6 +11907,8 @@ div#notebook {
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>/usr/local/anaconda3/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module &#39;tensorflow.python.framework.fast_tensor_util&#39; does not match runtime version 3.6
   return f(*args, **kwds)
+/usr/local/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
 </pre>
 </div>
 </div>
@@ -11964,7 +11966,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;2.1.2&#39;</pre>
+<pre>&#39;2.1.3&#39;</pre>
 </div>
 
 </div>
@@ -11977,17 +11979,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;<a class="anchor-link" href="#&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#182;</a></h3><p><u>注意 その0</u> <code>dlt</code>パッケージについては、<code>git clone https://github.com/hiroyuki827/dlt.git</code>でクローンし、dltフォルダの内部のdltフォルダを作業フォルダに置いてください。</p>
-
-<pre><code>├── LICENSE.md
-├── README.md
-└── dlt
-    ├── __init__.py
-    ├── cifar.py
-    ├── fashion_mnist.py
-    ├── mnist.py
-    └── utils.py</code></pre>
-<p>dltパッケージの使い方については、別途<code>dltパッケージの使い方/</code>を参照ください。</p>
+<h3 id="&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;<a class="anchor-link" href="#&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#182;</a></h3><p><u>注意 その0</u> <code>dlt</code>パッケージについては、<code>pip install dlt</code>でダウンロードしてください。dltパッケージの使い方については、別途<code>dltパッケージの使い方/</code>を参照ください。</p>
 <p><u>注意 その1</u> 
 いくつか勉強不足の点があるので、間違いを見つけられた場合はご指摘いただけると嬉しいです。これはissueページにて受け付けております。なお、各ライブラリのバージョンについては以下のようになっています。</p>
 <p><u>注意 その2</u> また、Jupyter notebookの行番号が入っていないところもありますが、基本的には上から読んでいっていただければと思います。本論については実際に実行し、結果をHTMLで記述しています。</p>
@@ -12172,7 +12164,7 @@ div#notebook {
 <pre>[[[ 59  62  63]
   [ 43  46  45]
   [ 50  48  43]
-  ..., 
+  ...
   [158 132 108]
   [152 125 102]
   [148 124 103]]
@@ -12180,7 +12172,7 @@ div#notebook {
  [[ 16  20  20]
   [  0   0   0]
   [ 18   8   0]
-  ..., 
+  ...
   [123  88  55]
   [119  83  50]
   [122  87  57]]
@@ -12188,16 +12180,17 @@ div#notebook {
  [[ 25  24  21]
   [ 16   7   0]
   [ 49  27   8]
-  ..., 
+  ...
   [118  84  50]
   [120  84  50]
   [109  73  42]]
 
- ..., 
+ ...
+
  [[208 170  96]
   [201 153  34]
   [198 161  26]
-  ..., 
+  ...
   [160 133  70]
   [ 56  31   7]
   [ 53  34  20]]
@@ -12205,7 +12198,7 @@ div#notebook {
  [[180 139  96]
   [173 123  42]
   [186 144  30]
-  ..., 
+  ...
   [184 148  94]
   [ 97  62  34]
   [ 83  53  34]]
@@ -12213,7 +12206,7 @@ div#notebook {
  [[177 144 116]
   [168 129  94]
   [179 142  87]
-  ..., 
+  ...
   [216 184 140]
   [151 118  84]
   [123  92  72]]]
@@ -12465,7 +12458,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_examples</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;images/examples.png&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_examples</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;examples.png&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12477,7 +12470,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src='images/examples.png'/></p>
+<p><img src='examples.png'/></p>
 
 </div>
 </div>
@@ -12536,6 +12529,62 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>今回の場合はデータセットが用意されているので気にする必要はありませんが、自分でデータセットを作る際は、各ラベルに対してデータの偏りがないようにする必要があります。これについても次のようにチェックすることができます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot data distribution</span>
+<span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_distribution_data</span><span class="p">(</span><span class="n">Y</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">train_labels</span><span class="p">,</span>
+                                 <span class="n">dataset_name</span><span class="o">=</span><span class="s1">&#39;y_train&#39;</span><span class="p">,</span>
+                                 <span class="n">classes</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
+                                 <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;dist_train.png&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mean Value: 5000
+Median Value: 5000.0
+Variance: 0
+Standard Deviation: 0.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='dist_train.png'/></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>※もともとのデータ<code>data.train_images</code>, <code>data.test_labels</code>と同じサイズなのでreshapeする必要はありませんが、とりあえずしておきます。</p>
 
 </div>
@@ -12552,7 +12601,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
@@ -12585,7 +12634,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">train_labels</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span> <span class="c1">#はじめの10個の画像ラベル</span>
@@ -12639,7 +12688,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Y_train</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">train_labels</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -12707,7 +12756,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
@@ -12729,7 +12778,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -12751,7 +12800,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># CNN layer 1</span>
@@ -12797,7 +12846,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
@@ -12900,7 +12949,7 @@ None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
@@ -12932,7 +12981,7 @@ None
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span>
@@ -12959,85 +13008,85 @@ None
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train on 45000 samples, validate on 5000 samples
 Epoch 1/40
-45000/45000 [==============================] - 196s 4ms/step - loss: 1.6734 - acc: 0.3870 - val_loss: 1.3087 - val_acc: 0.5260
+45000/45000 [==============================] - 227s 5ms/step - loss: 1.6825 - acc: 0.3799 - val_loss: 1.3348 - val_acc: 0.5204
 Epoch 2/40
-45000/45000 [==============================] - 189s 4ms/step - loss: 1.2580 - acc: 0.5493 - val_loss: 1.0397 - val_acc: 0.6384
+45000/45000 [==============================] - 213s 5ms/step - loss: 1.2799 - acc: 0.5411 - val_loss: 1.0953 - val_acc: 0.6106
 Epoch 3/40
-45000/45000 [==============================] - 189s 4ms/step - loss: 1.0878 - acc: 0.6155 - val_loss: 0.8916 - val_acc: 0.6894
+45000/45000 [==============================] - 212s 5ms/step - loss: 1.0972 - acc: 0.6122 - val_loss: 0.9410 - val_acc: 0.6662
 Epoch 4/40
-45000/45000 [==============================] - 190s 4ms/step - loss: 0.9612 - acc: 0.6621 - val_loss: 0.8642 - val_acc: 0.6996
+45000/45000 [==============================] - 247s 5ms/step - loss: 0.9805 - acc: 0.6526 - val_loss: 0.8497 - val_acc: 0.7110
 Epoch 5/40
-45000/45000 [==============================] - 190s 4ms/step - loss: 0.8799 - acc: 0.6903 - val_loss: 0.8151 - val_acc: 0.7234
+45000/45000 [==============================] - 223s 5ms/step - loss: 0.8965 - acc: 0.6846 - val_loss: 0.8329 - val_acc: 0.7160
 Epoch 6/40
-45000/45000 [==============================] - 190s 4ms/step - loss: 0.8213 - acc: 0.7134 - val_loss: 0.7249 - val_acc: 0.7556
+45000/45000 [==============================] - 208s 5ms/step - loss: 0.8231 - acc: 0.7086 - val_loss: 0.7515 - val_acc: 0.7372
 Epoch 7/40
-45000/45000 [==============================] - 209s 5ms/step - loss: 0.7679 - acc: 0.7321 - val_loss: 0.6875 - val_acc: 0.7668
+45000/45000 [==============================] - 223s 5ms/step - loss: 0.7768 - acc: 0.7261 - val_loss: 0.6848 - val_acc: 0.7666
 Epoch 8/40
-45000/45000 [==============================] - 253s 6ms/step - loss: 0.7254 - acc: 0.7459 - val_loss: 0.6946 - val_acc: 0.7646
+45000/45000 [==============================] - 217s 5ms/step - loss: 0.7264 - acc: 0.7422 - val_loss: 0.6726 - val_acc: 0.7650
 Epoch 9/40
-45000/45000 [==============================] - 262s 6ms/step - loss: 0.6845 - acc: 0.7602 - val_loss: 0.6455 - val_acc: 0.7776
+45000/45000 [==============================] - 224s 5ms/step - loss: 0.6867 - acc: 0.7579 - val_loss: 0.6413 - val_acc: 0.7824
 Epoch 10/40
-45000/45000 [==============================] - 253s 6ms/step - loss: 0.6580 - acc: 0.7692 - val_loss: 0.6545 - val_acc: 0.7750
+45000/45000 [==============================] - 211s 5ms/step - loss: 0.6569 - acc: 0.7681 - val_loss: 0.6400 - val_acc: 0.7844
 Epoch 11/40
-45000/45000 [==============================] - 251s 6ms/step - loss: 0.6268 - acc: 0.7789 - val_loss: 0.6393 - val_acc: 0.7860
+45000/45000 [==============================] - 206s 5ms/step - loss: 0.6316 - acc: 0.7780 - val_loss: 0.6219 - val_acc: 0.7884
 Epoch 12/40
-45000/45000 [==============================] - 252s 6ms/step - loss: 0.6113 - acc: 0.7817 - val_loss: 0.6507 - val_acc: 0.7726
+45000/45000 [==============================] - 200s 4ms/step - loss: 0.6005 - acc: 0.7885 - val_loss: 0.6431 - val_acc: 0.7838
 Epoch 13/40
-45000/45000 [==============================] - 251s 6ms/step - loss: 0.5777 - acc: 0.7949 - val_loss: 0.6218 - val_acc: 0.7914
+45000/45000 [==============================] - 220s 5ms/step - loss: 0.5777 - acc: 0.7945 - val_loss: 0.6010 - val_acc: 0.8002
 Epoch 14/40
-45000/45000 [==============================] - 252s 6ms/step - loss: 0.5512 - acc: 0.8038 - val_loss: 0.5925 - val_acc: 0.8042
+45000/45000 [==============================] - 241s 5ms/step - loss: 0.5554 - acc: 0.8038 - val_loss: 0.6028 - val_acc: 0.7986
 Epoch 15/40
-45000/45000 [==============================] - 252s 6ms/step - loss: 0.5315 - acc: 0.8120 - val_loss: 0.6020 - val_acc: 0.7996
+45000/45000 [==============================] - 216s 5ms/step - loss: 0.5292 - acc: 0.8124 - val_loss: 0.5978 - val_acc: 0.8012
 Epoch 16/40
-45000/45000 [==============================] - 252s 6ms/step - loss: 0.5214 - acc: 0.8169 - val_loss: 0.5971 - val_acc: 0.7958
+45000/45000 [==============================] - 223s 5ms/step - loss: 0.5136 - acc: 0.8165 - val_loss: 0.6232 - val_acc: 0.7968
 Epoch 17/40
-45000/45000 [==============================] - 254s 6ms/step - loss: 0.5022 - acc: 0.8220 - val_loss: 0.6078 - val_acc: 0.8000
+45000/45000 [==============================] - 208s 5ms/step - loss: 0.5032 - acc: 0.8206 - val_loss: 0.5959 - val_acc: 0.7988
 Epoch 18/40
-45000/45000 [==============================] - 206s 5ms/step - loss: 0.4814 - acc: 0.8286 - val_loss: 0.5867 - val_acc: 0.8062
+45000/45000 [==============================] - 211s 5ms/step - loss: 0.4798 - acc: 0.8282 - val_loss: 0.6210 - val_acc: 0.7938
 Epoch 19/40
-45000/45000 [==============================] - 187s 4ms/step - loss: 0.4705 - acc: 0.8337 - val_loss: 0.6367 - val_acc: 0.7972
+45000/45000 [==============================] - 209s 5ms/step - loss: 0.4716 - acc: 0.8328 - val_loss: 0.5747 - val_acc: 0.8032
 Epoch 20/40
-45000/45000 [==============================] - 190s 4ms/step - loss: 0.4594 - acc: 0.8380 - val_loss: 0.6023 - val_acc: 0.8030
+45000/45000 [==============================] - 216s 5ms/step - loss: 0.4512 - acc: 0.8389 - val_loss: 0.5871 - val_acc: 0.8040
 Epoch 21/40
-45000/45000 [==============================] - 190s 4ms/step - loss: 0.4460 - acc: 0.8413 - val_loss: 0.6052 - val_acc: 0.7994
+45000/45000 [==============================] - 204s 5ms/step - loss: 0.4312 - acc: 0.8476 - val_loss: 0.6208 - val_acc: 0.7978
 Epoch 22/40
-45000/45000 [==============================] - 188s 4ms/step - loss: 0.4363 - acc: 0.8436 - val_loss: 0.5910 - val_acc: 0.8026
+45000/45000 [==============================] - 192s 4ms/step - loss: 0.4262 - acc: 0.8488 - val_loss: 0.5934 - val_acc: 0.8056
 Epoch 23/40
-45000/45000 [==============================] - 202s 4ms/step - loss: 0.4215 - acc: 0.8506 - val_loss: 0.5799 - val_acc: 0.8110
+45000/45000 [==============================] - 189s 4ms/step - loss: 0.4179 - acc: 0.8516 - val_loss: 0.5731 - val_acc: 0.8132
 Epoch 24/40
-45000/45000 [==============================] - 209s 5ms/step - loss: 0.4137 - acc: 0.8535 - val_loss: 0.6209 - val_acc: 0.8016
+45000/45000 [==============================] - 190s 4ms/step - loss: 0.4111 - acc: 0.8530 - val_loss: 0.5838 - val_acc: 0.8094
 Epoch 25/40
-45000/45000 [==============================] - 191s 4ms/step - loss: 0.4059 - acc: 0.8553 - val_loss: 0.6068 - val_acc: 0.8020
+45000/45000 [==============================] - 189s 4ms/step - loss: 0.3981 - acc: 0.8588 - val_loss: 0.6056 - val_acc: 0.8040
 Epoch 26/40
-45000/45000 [==============================] - 235s 5ms/step - loss: 0.3926 - acc: 0.8605 - val_loss: 0.5926 - val_acc: 0.8092
+45000/45000 [==============================] - 189s 4ms/step - loss: 0.3884 - acc: 0.8624 - val_loss: 0.6217 - val_acc: 0.8012
 Epoch 27/40
-45000/45000 [==============================] - 218s 5ms/step - loss: 0.3930 - acc: 0.8588 - val_loss: 0.6040 - val_acc: 0.8090
+45000/45000 [==============================] - 219s 5ms/step - loss: 0.3771 - acc: 0.8653 - val_loss: 0.5868 - val_acc: 0.8106
 Epoch 28/40
-45000/45000 [==============================] - 210s 5ms/step - loss: 0.3780 - acc: 0.8644 - val_loss: 0.6066 - val_acc: 0.8054
+45000/45000 [==============================] - 260s 6ms/step - loss: 0.3726 - acc: 0.8675 - val_loss: 0.6102 - val_acc: 0.8056
 Epoch 29/40
-45000/45000 [==============================] - 206s 5ms/step - loss: 0.3760 - acc: 0.8672 - val_loss: 0.6093 - val_acc: 0.8104
+45000/45000 [==============================] - 260s 6ms/step - loss: 0.3615 - acc: 0.8710 - val_loss: 0.6162 - val_acc: 0.8062
 Epoch 30/40
-45000/45000 [==============================] - 203s 5ms/step - loss: 0.3702 - acc: 0.8681 - val_loss: 0.6174 - val_acc: 0.8064
+45000/45000 [==============================] - 260s 6ms/step - loss: 0.3525 - acc: 0.8736 - val_loss: 0.6009 - val_acc: 0.8160
 Epoch 31/40
-45000/45000 [==============================] - 201s 4ms/step - loss: 0.3543 - acc: 0.8720 - val_loss: 0.6041 - val_acc: 0.8096
+45000/45000 [==============================] - 261s 6ms/step - loss: 0.3488 - acc: 0.8747 - val_loss: 0.5900 - val_acc: 0.8152
 Epoch 32/40
-45000/45000 [==============================] - 205s 5ms/step - loss: 0.3507 - acc: 0.8760 - val_loss: 0.5896 - val_acc: 0.8134
+45000/45000 [==============================] - 258s 6ms/step - loss: 0.3443 - acc: 0.8768 - val_loss: 0.6067 - val_acc: 0.8108
 Epoch 33/40
-45000/45000 [==============================] - 200s 4ms/step - loss: 0.3464 - acc: 0.8758 - val_loss: 0.6178 - val_acc: 0.8060
+45000/45000 [==============================] - 259s 6ms/step - loss: 0.3437 - acc: 0.8788 - val_loss: 0.6084 - val_acc: 0.8096
 Epoch 34/40
-45000/45000 [==============================] - 189s 4ms/step - loss: 0.3387 - acc: 0.8802 - val_loss: 0.6336 - val_acc: 0.8104
+45000/45000 [==============================] - 258s 6ms/step - loss: 0.3292 - acc: 0.8834 - val_loss: 0.6204 - val_acc: 0.8072
 Epoch 35/40
-45000/45000 [==============================] - 189s 4ms/step - loss: 0.3400 - acc: 0.8799 - val_loss: 0.6347 - val_acc: 0.8072
+45000/45000 [==============================] - 257s 6ms/step - loss: 0.3266 - acc: 0.8843 - val_loss: 0.5963 - val_acc: 0.8130
 Epoch 36/40
-45000/45000 [==============================] - 189s 4ms/step - loss: 0.3305 - acc: 0.8821 - val_loss: 0.6210 - val_acc: 0.8134
+45000/45000 [==============================] - 258s 6ms/step - loss: 0.3272 - acc: 0.8837 - val_loss: 0.6000 - val_acc: 0.8158
 Epoch 37/40
-45000/45000 [==============================] - 189s 4ms/step - loss: 0.3289 - acc: 0.8824 - val_loss: 0.6103 - val_acc: 0.8088
+45000/45000 [==============================] - 258s 6ms/step - loss: 0.3197 - acc: 0.8853 - val_loss: 0.6156 - val_acc: 0.8152
 Epoch 38/40
-45000/45000 [==============================] - 196s 4ms/step - loss: 0.3192 - acc: 0.8859 - val_loss: 0.6459 - val_acc: 0.8056
+45000/45000 [==============================] - 259s 6ms/step - loss: 0.3132 - acc: 0.8879 - val_loss: 0.5987 - val_acc: 0.8128
 Epoch 39/40
-45000/45000 [==============================] - 199s 4ms/step - loss: 0.3237 - acc: 0.8846 - val_loss: 0.6315 - val_acc: 0.8008
+45000/45000 [==============================] - 258s 6ms/step - loss: 0.3098 - acc: 0.8884 - val_loss: 0.6110 - val_acc: 0.8136
 Epoch 40/40
-45000/45000 [==============================] - 253s 6ms/step - loss: 0.3191 - acc: 0.8880 - val_loss: 0.6321 - val_acc: 0.8060
+45000/45000 [==============================] - 258s 6ms/step - loss: 0.3105 - acc: 0.8894 - val_loss: 0.6090 - val_acc: 0.8114
 </pre>
 </div>
 </div>
@@ -13067,7 +13116,7 @@ Epoch 40/40
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span>
@@ -13092,8 +13141,8 @@ Epoch 40/40
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test score: 0.666006272602
-Test accuracy: 0.7923
+<pre>Test score: 0.6653376616477966
+Test accuracy: 0.7973
 </pre>
 </div>
 </div>
@@ -13122,7 +13171,7 @@ Test accuracy: 0.7923
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;results&#39;</span>
@@ -13178,7 +13227,7 @@ Test accuracy: 0.7923
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># predicted probabilities for the test set</span>
@@ -13202,7 +13251,7 @@ Test accuracy: 0.7923
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot some test images along with the prediction</span>
@@ -13257,7 +13306,7 @@ Test accuracy: 0.7923
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">test_labels</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
@@ -13274,7 +13323,7 @@ Test accuracy: 0.7923
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src='results/confusion matrix.png'/></p>
+<p><img src='results/confusion_matrix.png'/></p>
 
 </div>
 </div>
@@ -13309,7 +13358,7 @@ Test accuracy: 0.7923
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axL</span><span class="p">,</span> <span class="n">axR</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -13455,7 +13504,7 @@ model = Sequential()
 
 # CNN layer 1
 model.add(Convolution2D(32, (3, 3), padding='same',
-                 input_shape=x_train.shape[1:]))
+                 input_shape=X_train.shape[1:]))
 model.add(Activation('relu'))
 model.add(Convolution2D(32, (3, 3)))
 model.add(Activation('relu'))
