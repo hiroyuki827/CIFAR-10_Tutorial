@@ -13361,32 +13361,9 @@ Test accuracy: 0.7973
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">axL</span><span class="p">,</span> <span class="n">axR</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># loss</span>
-<span class="k">def</span> <span class="nf">plot_history_loss</span><span class="p">(</span><span class="n">fit</span><span class="p">):</span>
-    <span class="c1"># Plot the loss in the history</span>
-    <span class="n">axL</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;loss for training&quot;</span><span class="p">)</span>
-    <span class="n">axL</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;loss for validation&quot;</span><span class="p">)</span>
-    <span class="n">axL</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;model loss&#39;</span><span class="p">)</span>
-    <span class="n">axL</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
-    <span class="n">axL</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
-    <span class="n">axL</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
-
-<span class="c1"># acc</span>
-<span class="k">def</span> <span class="nf">plot_history_acc</span><span class="p">(</span><span class="n">fit</span><span class="p">):</span>
-    <span class="c1"># Plot the loss in the history</span>
-    <span class="n">axR</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;loss for training&quot;</span><span class="p">)</span>
-    <span class="n">axR</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;loss for validation&quot;</span><span class="p">)</span>
-    <span class="n">axR</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;model accuracy&#39;</span><span class="p">)</span>
-    <span class="n">axR</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
-    <span class="n">axR</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
-    <span class="n">axR</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
-
-<span class="n">plot_history_loss</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
-<span class="n">plot_history_acc</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s1">&#39;cifar10-tutorial.png&#39;</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_loss_and_accuracy</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span>  <span class="c1">#model.fitのインスタンス</span>
+                                   <span class="n">fname</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s1">&#39;cifar10-tutorial.png&#39;</span><span class="p">)</span> <span class="c1">#保存するファイル名とパス</span>
+                                  <span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13492,6 +13469,12 @@ X_test = X_test.astype('float32') / 255
 Y_train = to_categorical(data.train_labels, 10)
 Y_test = to_categorical(data.test_labels, 10)
 
+# Plot data distribution
+dlt.utils.plot_distribution_data(Y=data.train_labels,
+                                 dataset_name='y_train',
+                                 classes=data.classes,
+                                 fname='dist_train.png')
+
 # ----------------------------------------------------------
 # Model and training
 # ----------------------------------------------------------
@@ -13576,32 +13559,10 @@ dlt.utils.plot_confusion_matrix(data.test_labels, yp, data.classes,
                                   title='confusion matrix',
                                   fname=os.path.join(folder, 'confusion matrix.png'))
 
-fig, (axL, axR) = plt.subplots(ncols=2, figsize=(10,4))
-
-# loss
-def plot_history_loss(fit):
-    # Plot the loss in the history
-    axL.plot(fit.history['loss'],label="loss for training")
-    axL.plot(fit.history['val_loss'],label="loss for validation")
-    axL.set_title('model loss')
-    axL.set_xlabel('epoch')
-    axL.set_ylabel('loss')
-    axL.legend(loc='upper right')
-
-# acc
-def plot_history_acc(fit):
-    # Plot the loss in the history
-    axR.plot(fit.history['acc'],label="loss for training")
-    axR.plot(fit.history['val_acc'],label="loss for validation")
-    axR.set_title('model accuracy')
-    axR.set_xlabel('epoch')
-    axR.set_ylabel('accuracy')
-    axR.legend(loc='upper right')
-
-plot_history_loss(fit)12
-plot_history_acc(fit)
-fig.savefig(os.path.join(folder, 'cifar10-tutorial.png'))
-plt.close()</code></pre>
+# plot the loss and accuracy graph
+dlt.utils.plot_loss_and_accuracy(fit,  #model.fitのインスタンス
+                                   fname=os.path.join(folder, 'cifar10-tutorial.png') #保存するファイル名とパス
+                                  )</code></pre>
 
 </div>
 </div>
