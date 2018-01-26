@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="CIFAR-10-&#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523;">CIFAR-10 &#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523;<a class="anchor-link" href="#CIFAR-10-&#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523;">&#182;</a></h1>
+<h1 id="Keras&#12434;&#29992;&#12356;&#12383;CIFAR-10-&#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523;">Keras&#12434;&#29992;&#12356;&#12383;CIFAR-10 &#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523;<a class="anchor-link" href="#Keras&#12434;&#29992;&#12356;&#12383;CIFAR-10-&#12481;&#12517;&#12540;&#12488;&#12522;&#12450;&#12523;">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11792,12 +11792,12 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>このチュートリアルでは、<a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a>と呼ばれる画像分類問題を扱います。CIFAR-10は5万枚の32x32ピクセルのカラーの画像データと、それを分類する10個のラベル「飛行機、自動車、鳥、猫、鹿、犬、蛙、馬、船、トラック」で成り立っています。より細分化されたラベルに分類するCIFAR-100というものもあり、こちらはラベルが100個ついています。どちらも基本的には同じものなので、今回はCIFAR-10を使ってみます。</p>
-<p>また、実装にはKerasを使います。Kerasは教師なし学習には使えませんが、CIFAR-10やMNISTを代表する典型的な機械学習の問題を扱う上においては、Kerasで十分だと思います。さらにKerasはシンプルなネットワーク（といっても一方向のネットワークだけではなく、分岐するようなもの、RNNなど）に関しては非常に簡単に実装できるので、初心者の方も（生のTensorflowよりは）何やっているか理解しやすいと思います。このチュートリアルでは、Kerasの実装法も（簡単にですが）説明しているので、Kerasを知らない方も読み進めることができるのではないかと思います。詰まった際は<a href="https://keras.io/ja/">公式ドキュメント</a>を参照ください。</p>
-<p>このチュートリアルは私が大学の講義で学んだ内容をベースにしているので、私自身が理解するのに時間がかかったところなどは余計に説明を加えました。全体的に冗長な感じは否めませんが、あえて残すことで似たような悩みを持つ方に役立つのではないかと考えています。</p>
+<p>また、実装には<a href="https://keras.io/ja/">Keras</a>を使います。Kerasは教師なし学習には使えませんが、CIFAR-10やMNISTを代表する典型的な機械学習の問題を扱う上においては、Kerasで十分だと思います。さらにKerasはシンプルなネットワーク（といっても一方向のネットワークだけではなく、分岐するようなもの、RNNなど）に関しては非常に簡単に実装できるので、初心者の方も（生の<a href="https://www.tensorflow.org">Tensorflow</a>よりは）何やっているか理解しやすいと思います。このチュートリアルでは、Kerasの実装法も（簡単にですが）説明しているので、Kerasを知らない方も読み進めることができるのではないかと思います。詰まった際は<a href="https://keras.io/ja/">公式ドキュメント</a>を参照ください。</p>
+<p>このチュートリアルは私が<a href="https://github.com/hiroyuki827/deep_learning_in_physics_research_SS17">大学の講義</a>で学んだ内容をベースにしているので、私自身が理解するのに時間がかかったところなどは余計に説明を加えました。全体的に冗長な感じは否めませんが、あえて残すことで似たような悩みを持つ方に役立つのではないかと考えています。</p>
 <p><u>予備知識&想定読者</u></p>
 <ul>
 <li>深くは理解できていないが、<a href="https://www.tensorflow.org/get_started/mnist/beginners">MNIST for beginners</a>はやってみた。が、その後が続かない。</li>
-<li>機械学習の背景については一通り勉強してみた（「ゼロから作るDeep Learning」)</li>
+<li>機械学習の背景については一通り勉強してみた（「<a href="https://www.oreilly.co.jp/books/9784873117584/">ゼロから作るDeep Learning</a>」)</li>
 <li>Kerasを使ってCNNをやってみたい。</li>
 </ul>
 
@@ -11809,7 +11809,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><u>動作環境</u></p>
-<p>出来る限りパワーのあるパソコンがあればいいですが、無理してクラウドサービスを使う必要はないです。ライブラリのバージョンは以下の通り:</p>
+<p>出来る限りパワーのあるパソコンがあればいいですが、もしなければクラウドのサービス（たとえば<a href="https://qiita.com/tomo_makes/items/f70fe48c428d3a61e131">Google Colaboratry</a>など）をどうぞライブラリのバージョンは以下の通り:</p>
 
 </div>
 </div>
@@ -11884,54 +11884,6 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span>
-<span class="n">tensorflow</span><span class="o">.</span><span class="n">__version__</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/anaconda3/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module &#39;tensorflow.python.framework.fast_tensor_util&#39; does not match runtime version 3.6
-  return f(*args, **kwds)
-/usr/local/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
-  from ._conv import register_converters as _register_converters
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;1.4.1&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -11979,11 +11931,31 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;<a class="anchor-link" href="#&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#182;</a></h3><p><u>注意 その0</u> <code>dlt</code>パッケージについては、<code>pip install dlt</code>でダウンロードしてください。dltパッケージの使い方については、別途<code>dltパッケージの使い方/</code>を参照ください。</p>
+<h3 id="&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;<a class="anchor-link" href="#&#12371;&#12398;&#12494;&#12540;&#12488;&#12434;&#22987;&#12417;&#12427;&#21069;&#12395;">&#182;</a></h3><p><u>注意 その0</u> <code>dlt</code>パッケージについては、<code>pip install dlt</code>でダウンロードしてください。dltパッケージの使い方については、別途<a href="https://github.com/hiroyuki827/deep_learning_tools/blob/master/dltパッケージの使い方/dliprパッケージの使い方.ipynb"><code>dltパッケージの使い方/</code></a>を参照ください。Jupyter上では以下を実行してください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install dlt
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p><u>注意 その1</u> 
 いくつか勉強不足の点があるので、間違いを見つけられた場合はご指摘いただけると嬉しいです。これはissueページにて受け付けております。なお、各ライブラリのバージョンについては以下のようになっています。</p>
 <p><u>注意 その2</u> また、Jupyter notebookの行番号が入っていないところもありますが、基本的には上から読んでいっていただければと思います。本論については実際に実行し、結果をHTMLで記述しています。</p>
-<p><u>注意 その3</u> ハイパーパラメータの設定については、Kerasの<a href="https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py">サンプルコード</a>を参照しました。</p>
 
 </div>
 </div>
@@ -12001,7 +11973,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>まず、必要なパッケージ等をインポートします。画像を扱うためには、その向きを考慮するためにCNN(Convolutional Neuron Network)を使う必要があります。それを考慮して以下のようにインポートします。<code>os</code>モジュールは、ファイルの保存ディレクトリの作成に使います。</p>
+<p>まず、必要なパッケージ等をインポートします。画像を扱うためには、その向きを考慮するためにCNN (Convolutional Neuron Network) を使う必要があるので、それを考慮して以下のようにインポートします。ここで<code>os</code>モジュールは、ファイルの保存ディレクトリの作成に使います。</p>
 
 </div>
 </div>
@@ -12017,8 +11989,7 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">keras.layers.convolutional</span> <span class="k">import</span> <span class="n">Convolution2D</span>
-<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span>
 <span class="kn">from</span> <span class="nn">keras.optimizers</span> <span class="k">import</span> <span class="n">Adam</span>
 <span class="kn">from</span> <span class="nn">keras.utils.np_utils</span> <span class="k">import</span> <span class="n">to_categorical</span>
 </pre></div>
@@ -12033,8 +12004,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>次にCIFAR-10のデータフォルダから必要なデータを読み込みます。後の学習結果の可視化を使うため、dltパッケージを用いてダウンロードします。</p>
-<p><strong>注意1</strong> データセットは<code>~/.keras/dataset</code>以下にダウンロードされます。ダウンロードにはTensorflowのコードを用いています。詳しくはdltパッケージ内の<code>cifar.py</code>参照。</p>
-<p><strong>注意2</strong> 以前は<a href="http://qiita.com/supersaiakujin/items/5e9d2b2850e256f99982">[Python]CIFAR-10, CIFAR-100のデータを読み込む方法</a>のようにする必要があったようなんですが、Tensorflowに組み込まれたKeras2からはすでに読み込むようのメソッドが入っているので特別する必要はありません。</p>
+<p><strong>コメント</strong> データセットは<code>~/.keras/dataset</code>以下にダウンロードされます。ダウンロードにはTensorflowのコードを用いています。詳しくはdltパッケージ内の<code>cifar.py</code>参照。</p>
 
 </div>
 </div>
@@ -12529,7 +12499,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>今回の場合はデータセットが用意されているので気にする必要はありませんが、自分でデータセットを作る際は、各ラベルに対してデータの偏りがないようにする必要があります。これについても次のようにチェックすることができます。</p>
+<p>※ もともとのデータ<code>data.train_images</code>, <code>data.test_labels</code>と同じサイズなのでreshapeする必要はありませんが、とりあえずしておきます。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="&#12487;&#12540;&#12479;&#37327;&#12398;&#12521;&#12505;&#12523;&#12395;&#23550;&#12377;&#12427;&#20998;&#24067;">&#12487;&#12540;&#12479;&#37327;&#12398;&#12521;&#12505;&#12523;&#12395;&#23550;&#12377;&#12427;&#20998;&#24067;<a class="anchor-link" href="#&#12487;&#12540;&#12479;&#37327;&#12398;&#12521;&#12505;&#12523;&#12395;&#23550;&#12377;&#12427;&#20998;&#24067;">&#182;</a></h5><p>今回の場合はデータセットが用意されているので気にする必要はありませんが、自分でデータセットを作る際は、各ラベルに対してデータの偏りがないようにする必要があります。これについても次のようにチェックすることができます。</p>
 
 </div>
 </div>
@@ -12585,7 +12564,7 @@ Standard Deviation: 0.0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>※もともとのデータ<code>data.train_images</code>, <code>data.test_labels</code>と同じサイズなのでreshapeする必要はありませんが、とりあえずしておきます。</p>
+<p>このように、各ラベルに対して同じだけのデータ（厳密に言えば正解ラベル）が存在していることがわかります。実際、データセットを自分で作るときにこのようにしないと、最終的な結果にラベルのバイアスがかかってしまいます。</p>
 
 </div>
 </div>
@@ -12594,7 +12573,7 @@ Standard Deviation: 0.0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>このままでは各データを扱いにくいので、RGBの値(白なら255、黒なら0)を利用して0から1までの間に<strong>正規化</strong>することにします。この操作により<code>X_train, X_test</code>の形状は変わりません。</p>
+<p>・・・このままでは各データを扱いにくいので、RGBの値(白なら255、黒なら0)を利用して0から1までの間に<strong>正規化</strong>することにします。この操作により<code>X_train, X_test</code>の形状は変わりません。</p>
 
 </div>
 </div>
@@ -12617,7 +12596,7 @@ Standard Deviation: 0.0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>ところで、分類問題では最後のActivationにsoftmaxを使います。というのは、出力値のリストの添字を見ることで、そのデータがどのカテゴリーに分類されうるか(その割合or確率)がわかるからです。たとえば適当な5つのカテゴリー問題を考えたとして</p>
+<h5 id="one-hot&#12505;&#12463;&#12488;&#12523;&#12395;&#12388;&#12356;&#12390;">one-hot&#12505;&#12463;&#12488;&#12523;&#12395;&#12388;&#12356;&#12390;<a class="anchor-link" href="#one-hot&#12505;&#12463;&#12488;&#12523;&#12395;&#12388;&#12356;&#12390;">&#182;</a></h5><p>ところで、分類問題では最後のActivationにsoftmaxを使います。というのは、出力値のリストの添字を見ることで、そのデータがどのカテゴリーに分類されうるか(その割合or確率)がわかるからです。たとえば適当な5つのカテゴリー問題を考えたとして</p>
 
 <pre><code>[0.03, 0.05, 0.85, 0.03, 0.04]</code></pre>
 <p>なるリストが得られたとすると、<code>np.argmax([0.03, 0.05, 0.85, 0.03, 0.04])=[2]</code>であるから結果として「カテゴリー<code>2</code>の確率が0.85x100=85%程度であるらしい」ことがわかります。</p>
@@ -12681,6 +12660,14 @@ Standard Deviation: 0.0
 <pre><code>[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]</code></pre>
 <p>というone-hotベクトルに対応します。このようにすれば、テスト用のデータをネットワークに通して予測させた後(<code>predict</code>)の結果は、その確率が一番大きいところ、すなわち<code>1</code>の場所がどこにあるかを調べれば良いことになりますね。このようにone-hotベクトルになおしておけば、softmaxからも解釈が可能になりカテゴリーの概念がよりコンピュータに理解させやすくなります。</p>
 <p>※出力値も入力値に対応させて<code>Y_train</code>, <code>Y_test</code>と置くことにします。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>ということで、訓練用<code>Y_train</code>とテスト用<code>Y_test</code>の出力値をone-hotベクトルに直しておきます。</p>
 
 </div>
@@ -12740,7 +12727,7 @@ Standard Deviation: 0.0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Layer&#12398;&#27083;&#36896;">3. Layer&#12398;&#27083;&#36896;<a class="anchor-link" href="#3.-Layer&#12398;&#27083;&#36896;">&#182;</a></h2><p>ここではネットワークを構築します。Tensorflowを触れた方はご存知かと思いますが、ネットワークの構築と学習の際のデータのインプットは別個のものとして扱われます。Kerasも同様で、まずグラフを構築し、その後学習させる際にデータを流すという手順を踏みます。</p>
+<h2 id="3.-Layer&#12398;&#27083;&#36896;">3. Layer&#12398;&#27083;&#36896;<a class="anchor-link" href="#3.-Layer&#12398;&#27083;&#36896;">&#182;</a></h2><p>ここではネットワークを構築します。Tensorflowを触れた方はご存知かと思いますが、<a href="https://qiita.com/hiroyuki827/items/509c2ac7735c8c16ad45">ネットワークの構築と学習の際のデータのインプットは別個のものとして扱われます</a>。Kerasも同様で、まずグラフを構築し、その後学習させる際にデータを流すという手順を踏みます。</p>
 
 </div>
 </div>
@@ -12771,7 +12758,7 @@ Standard Deviation: 0.0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>今回は基本的な構造しか扱わないので、<code>Sequential</code>モデルを扱います。インスタンス<code>model</code>を生成します。</p>
+<p>今回は基本的な構造しか扱わないので、<a href="https://keras.io/ja/models/sequential/"><code>Sequential</code>モデル</a>を扱います。インスタンス<code>model</code>を生成します。</p>
 
 </div>
 </div>
@@ -12793,7 +12780,7 @@ Standard Deviation: 0.0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>これ以降はこのインスタンス<code>model</code>にlayerを追加していけばいいので、以下のように設定します。</p>
+<p>これ以降はこのインスタンス<code>model</code>にlayerを追加していけばいいので、以下のように設定します。このネットワークの設定の仕方は、全く任意です。<a href="https://github.com/keras-team/keras/blob/master/examples/cifar10_cnn.py">Kerasのサンプルコード</a>を見ると、少し違ったコードが書かれています。実際、サンプルコードのほうを実行すると、より高い精度が得られます。今回は説明の都合上、低い精度を与えるニューラルネットワーク構造を考えてみます。</p>
 
 </div>
 </div>
@@ -12804,18 +12791,18 @@ Standard Deviation: 0.0
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># CNN layer 1</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
                  <span class="n">input_shape</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
 
 <span class="c1"># CNN layer 2</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
@@ -12922,15 +12909,6 @@ None
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>なお、1 epochの中では<code>batch_size</code>だけデータを取り出して計算させるので、このデータが<code>None</code>に入ります。たとえば<code>batch_size=32</code>とすると、1 epoch内で<code>50000 (images) / 32 (images) = 1562</code>回だけ計算させることになります。</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="4.-&#23398;&#32722;&#12373;&#12379;&#12427;">4. &#23398;&#32722;&#12373;&#12379;&#12427;<a class="anchor-link" href="#4.-&#23398;&#32722;&#12373;&#12379;&#12427;">&#182;</a></h2><p>次に、上のように構築したニューラルネットワークに対して具体的にデータを入れて学習させます。</p>
 
 </div>
@@ -12940,9 +12918,7 @@ None
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>まずネットワークの最適化法を決めます。損失関数を最小に最適化しますが、分類問題では<code>categorical_crossentropy</code>（交差エントロピー）を使います（上記書籍参照）。最適化法は<code>rmsprop</code>を使うことにしましょう。学習率は<code>lr=0.001</code>としておきます。（これはHyperparameterなので、結果を見ながら自分で決める必要があります。)</p>
-<p>最適化法については: <a href="http://qiita.com/tokkuman/items/1944c00415d129ca0ee9">Optimizer : 深層学習における勾配法について</a></p>
-<p>どのように学習させるかというこれらの情報は、<code>compile</code>メソッドで指定できます。<code>model</code>インスタンスに指定します。</p>
+<p>どのように学習させるかという情報は、<a href="https://keras.io/ja/models/sequential/#compile"><code>compile</code>メソッド</a>で指定できます。<code>model</code>インスタンスに指定します。</p>
 
 </div>
 </div>
@@ -12953,8 +12929,8 @@ None
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-<span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
-<span class="n">optimizer</span><span class="o">=</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">),</span>
+<span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="c1"># 損失関数の設定</span>
+<span class="n">optimizer</span><span class="o">=</span><span class="n">Adam</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">),</span> <span class="c1"># 最適化法の指定</span>
 <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 
@@ -12967,14 +12943,35 @@ None
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>まずネットワークの最適化法を決めます。分類問題では<code>categorical_crossentropy</code>（交差エントロピー）を使います（上記書籍参照）。最適化法は<code>Adam</code>を使うことにしましょう。学習率は<code>lr=0.001</code>としておきます。（これはHyperparameterなので、結果を見ながら自分で決める必要があります。)</p>
+<p>最適化法については: <a href="http://qiita.com/tokkuman/items/1944c00415d129ca0ee9">Optimizer : 深層学習における勾配法について</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>いよいよ学習させることにします。学習は<code>fit</code>メソッドで実行します。入力値と最終的な値の学習データを引数に入れます。バッチ数は大きい方が精度が高くなるのですが、メモリーが少ないとリソースエラーになってしまうので、程々の値としてここでは<code>128</code>にしておきます。(GPU上の計算でResource Errorになった場合は、この値が大きいことが原因であることが多いです。）エポック数も<code>40</code>です。バッチ数が128, エポック数40ということで、1エポックあたり全インプットデータを128ずつ取り出して計算を繰り返します。全データを取り終えたら1エポックの終了です。</p>
-<p>また<code>validation_split</code>というのは、学習データの0.1(10%)を最終的なパラメータの設定に使うというものです。このデータにより、過学習しているかどうかを知ることができます。この設定のほかに個別に<code>validation_data</code>を設定すればより高精度の結果を得ることができるようですが、このチュートリアルではそれを目的としていないので、とりあえず10%を使うということにしておきます。(<code>validation_data</code>を使うときは<code>X_train</code>を適当に(<code>X_valid</code>, <code>Y_valid</code>などと分割する必要があります。)　混乱を防ぐためにまとめておくと、</p>
-<ul>
-<li>X_train, Y_train =&gt; 学習データ. ウエイトとバイアスが決まったら学習終了</li>
-<li>X_test, Y_test =&gt; テストデータ. 学習後に分類できてるか確かめる。</li>
-<li>X_valid, Y_valid (もし<code>validation_data</code>使うなら) =&gt; 過学習のチェック. 適宜ハイパーパラメータを調整する。</li>
-</ul>
+<p>また<code>validation_split</code>というのは、学習データの何パーセントを最終的なパラメータの設定に使うかを指定するものです。このデータにより、過学習しているかどうかを知ることができます。この設定のほかに個別に<code>validation_data</code>を設定すればより高精度の結果を得ることができるようですが、このチュートリアルではそれを目的としていないので、とりあえず10%を使うということにしておきます。(<code>validation_data</code>を使うときは<code>X_train</code>を適当に(<code>X_valid</code>, <code>Y_valid</code>などと分割する必要があります。)　</p>
+<p>混乱を防ぐためにまとめておくと、</p>
+
+<pre><code>- X_train, Y_train =&gt; 学習データ. ウエイトとバイアスが決まったら学習終了
+- X_test, Y_test =&gt; テストデータ. 学習後に分類できてるか確かめる。
+- X_valid, Y_valid (もし`validation_data`使うなら) =&gt; 過学習のチェック. 適宜ハイパーパラメータを調整する。</code></pre>
 <p>となっています。以下で見るように、過学習をチェックするためには<code>val_loss</code>もしくは<code>val_acc</code>を追いかける必要があります。これらは上のいずれかを有効にすることで可能になります。</p>
+<p>なお、メモリーの容量の関係から、<code>X_train</code>のデータをまるまる用いて計算させることはできません。その中のいくつかを<code>batch_size</code>で取り出して、計算させます。すべてのデータを一通り計算させたとき、それを1 epochと数えます。たとえば<code>batch_size=32</code>とすると、1 epoch内で<code>50000 (images) / 32 (images) = 1562</code>回だけ計算させることになります。1562回終わったら、1 epochです。</p>
+<p>更に人間が決めるパラメータとして、何epoch学習させるかというものがあります。ここでは適当に<code>epochs=40</code>と設定しておきます。この回数は多すぎても時間がかかりすぎるだけですし（過学習が起きます）、少なすぎては学習が足りなくなってしまいます。さらにモデルによっても異なるので、どうすればいいかは少しづつ変えてみるしか無いのですが、Kerasでは<code>callbacks</code>の<code>EarlyStopping</code>が使えます。<code>EarlyStopping</code>の使い方は練習問題に回すとして、余力があれば色々変えて学習がどう進んでいくか見てみてください。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>以上の情報を<a href="https://keras.io/ja/models/sequential/#fit"><code>fit</code>メソッド</a>に入れます。</p>
 
 </div>
 </div>
@@ -12986,9 +12983,9 @@ None
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span>
               <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-              <span class="n">epochs</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="c1">#shouldn&#39;t be raised to 100, because the overfitting occurs.</span>
+              <span class="n">epochs</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
               <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-              <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span>
+              <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span> <span class="c1"># 今回は訓練データセットの10%をvalidationデータセットとして使う</span>
                 <span class="p">)</span>
 </pre></div>
 
@@ -13099,7 +13096,7 @@ Epoch 40/40
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>最終的に学習させた結果として、およそ77%の精度で分類できることがわかりました。え？90%じゃないかって？その疑問はあとに取っておいてください。</p>
+<p>最終的に学習させた結果として、およそ81.14%の精度で分類できることがわかりました。え？88.94%じゃないかって？その疑問はあとに取っておいてください。</p>
 <p><u>注意</u> val_accについては、訓練用のデータを用いて精度を見ているだけなので、テストデータ(そのモデルが実用可能かどうかを用いて評価したもの(model.evaluate)とは意味合いが異なります。詳しくは後述。</p>
 
 </div>
@@ -13109,7 +13106,7 @@ Epoch 40/40
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>また、学習されたモデルがどの程度の精度を持ってテストデータを判定できるか(分類できるか)を評価することにします。</p>
+<p>また、学習されたモデルがどの程度の精度を持ってテストデータを判定できるか(分類できるか)を評価することにします。これは<a href="https://keras.io/ja/models/sequential/#compile"><code>evaluate</code>メソッド</a>で実現できます。</p>
 
 </div>
 </div>
@@ -13164,7 +13161,7 @@ Test accuracy: 0.7973
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>なお、この結果を後から使いたいときは、以下のようにモデルを保存することができます。モデルの再利用については、付録A.2, A.3などを参照。</p>
+<p>なお、この結果を後から使いたいときは、以下のようにモデルを保存することができます。モデルの再利用については、付録Aを参照ください。</p>
 
 </div>
 </div>
@@ -13216,7 +13213,7 @@ Test accuracy: 0.7973
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>学習させたモデルから分類ラベルを取り出すには、<code>predict</code>メソッドが使えます。引数にはテストデータを指定します。さらにここでは最終的な値ではなく、<code>softmax</code>の出力するリストの最大値のラベルがほしいので、<code>np.argmax</code>でその添字を取り出します。それぞれを<code>Yp</code>, <code>yp</code>とします。</p>
+<p>学習させたモデルから分類ラベルを取り出すには、<a href="https://keras.io/ja/models/sequential/#predict"><code>predict</code>メソッド</a>が使えます。引数にはテストデータを指定します。さらにここでは最終的な値ではなく、<code>softmax</code>の出力するリストの最大値のラベルがほしいので、<code>np.argmax</code>でその添字を取り出します。各ラベルごとの精度を<code>preds</code>, 予測されるであろうラベルのarrayを<code>cls</code>とします。</p>
 <p><strong>コメント</strong> 私自身<code>predict</code>が実際に何をやっているのかわからなかったので、ここで詳しくまとめておきます。
 最初に、<code>X_train, Y_train</code>を用いてネットワークを学習させました。この学習で80%の精度を得たわけですが、結果として得られたものは各層の重み、バイアスです。これが入力データ<code>X_train, Y_train</code>にあうように、そして<strong>汎化性</strong>(あとで述べます)を持つように決まったわけです。これが学習で得たものの実態です。次に、学習で得たネットワーク全体の構造を（文字通り）通して得られた画像(とか実体としてのデータ)がどう得られるかを見たい。(⇐今ここ) それをするのが<code>model.predict(X_test)</code>なんですね。<code>model</code>は学習されたネットワークを指定し、引数の<code>X_test</code>はテストデータをネットワークに通すために指定しているわけです。それで得られたものは<code>Yp</code>です。したがって、<code>Yp</code>は<code>Y_train</code>や<code>Y_test</code>と同じデータ構造(タプルとして)を持っていることになります。</p>
 <p>まとめると、以下で比べるのは「学習されたネットワークを通した入力値(テストデータ)」と「実際のテストデータ」の違いです。もっというと、10個の要素を持つリストの中で、一番大きい確率を持つ要素の添字が一緒かどうかを見ています。(このあたりの内容は可視化しなくてもわかります: <a href="http://qiita.com/hiroyuki827/items/e6914b9b85f7bfe55078">自前の保存したモデルを用いて画像を分類してみる。</a>)</p>
@@ -13231,14 +13228,23 @@ Test accuracy: 0.7973
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># predicted probabilities for the test set</span>
-<span class="n">Yp</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Yp</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="bp">cls</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_classes</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>注意</strong>: ここでは新しいバージョンのKerasに実装された新しいメソッド<code>predict_classes</code>を用いることにします。ただしやっていることは<code>np.argmax(preds,axis=1)</code>と全く同じです。</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -13257,7 +13263,7 @@ Test accuracy: 0.7973
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot some test images along with the prediction</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_prediction</span><span class="p">(</span>
-        <span class="n">Yp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
         <span class="n">data</span><span class="o">.</span><span class="n">test_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
         <span class="n">data</span><span class="o">.</span><span class="n">test_labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
         <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
@@ -13287,8 +13293,8 @@ Test accuracy: 0.7973
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>オレンジ色のついたラベルは、写真の正しいカテゴリーを示しており、バーの値は学習によるコンピュータの分類の精度を表しています。(どのくらいの確率で、その写真がそのカテゴリーに分類されるか。) テスト用の画像に対して、どの程度予測できているかがわかりますね。上２つの画像の分類は正しいですが、蛙(frog)に関しては分類が間違っていますね。</p>
-<p>たとえば一つ目の画像ですが、正しいラベルは猫(cat)です。しかしながらコンピュータはおよそ25%の確率で犬(dog)だと考えています。まぁ80%で猫だと言っているので間違いではありません。これは正しい分類!(人間でも間違えることありますよね?)</p>
-<p>これとは対照的なのが二つ目の画像で、ほとんど100%の確率で船(ship)だとあてています。一方3つめは、蛙の画像を鳥と間違えて分類してしまっているようだ。。。</p>
+<p>たとえば一つ目の画像ですが、正しいラベルは猫(cat)です。しかしながらコンピュータは数%の確率で犬(dog)だと考えています。まぁ90%以上の精度で猫だと言っているので間違いではありません。これは正しい分類!(人間でも間違えることありますよね?)</p>
+<p>これとは対照的なのが二つ目の画像で、90%の確率で船(ship)だとあてていますが、10%程度でautomobileと分類してしまっています。。。</p>
 <p>こんな感じで、テスト用の画像に対して、どの程度予測できているかがわかりますね。</p>
 <p><strong>これが10個続きます</strong></p>
 
@@ -13309,7 +13315,7 @@ Test accuracy: 0.7973
 <div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">test_labels</span><span class="p">,</span> <span class="n">yp</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">test_labels</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>
                                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;confusion matrix&#39;</span><span class="p">,</span>
                                   <span class="n">fname</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s1">&#39;confusion_matrix.png&#39;</span><span class="p">))</span>
 </pre></div>
@@ -13351,7 +13357,7 @@ Test accuracy: 0.7973
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>次に学習結果の確率と損失関数を見ます。以下のコードは実行する際は、いずれかをコメントアウトしてくださいね。</p>
 <p>よく精度~%が得られたという意味で、精度が非常に重要視されるように見受けられるのですが、個人的にはloss functionの動きのほうがよっぽど大事だと思います。損失関数を見ずに確率だけを見ていた場合、その学習結果は<strong>過学習</strong>に陥っている可能性があるからです。どんな場合でも、損失関数の動きを見るようにしてください。</p>
-<p>以下のコードでは、<code>fit.history['loss']</code>と<code>fit.history['val_loss']</code>をグラフにしていますね。<code>val_loss</code>, <code>val_acc</code>は<code>validation_split</code>を入れると自動的に生成されるラベルで、学習のインスタンス<code>fit</code>を用いて<code>fit.history[]</code>で呼び出せます。それぞれの出力結果は以下のようになっています。(精度についても<code>fit.history['acc']</code>と<code>fit.history['val_acc']</code>でできます。)</p>
+<p>以下のコードでは、<code>fit.history['loss']</code>と<code>fit.history['val_loss']</code>をグラフにしています。<code>val_loss</code>, <code>val_acc</code>は<code>validation_split</code>を入れると自動的に生成されるラベルで、学習のインスタンス<code>fit</code>を用いて<code>fit.history[]</code>で呼び出せます。それぞれの出力結果は以下のようになっています。(精度についても<code>fit.history['acc']</code>と<code>fit.history['val_acc']</code>でできます。)</p>
 
 </div>
 </div>
@@ -13384,15 +13390,13 @@ Test accuracy: 0.7973
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>model loss</strong></p>
-<p>まず損失関数の方を見ていきたいのですが、途中から<code>val_loss</code>が増加に転じていますね。これが過学習の兆候です！これ以上学習させてはいけません。
+<h4 id="Model-Loss">Model Loss<a class="anchor-link" href="#Model-Loss">&#182;</a></h4><p>まず損失関数の方を見ていきたいのですが、途中から<code>val_loss</code>が増加に転じていますね。これが過学習の兆候です！これ以上学習させてはいけません。
 過学習は訓練用のデータに以上にフィットしていしまい、汎用化できなくなる現象です。</p>
 <p><img src='images/overfitting.png'/></p>
 <p><code>X_train</code>のうち90%のデータを訓練させた結果、訓練用のデータの10%を使っても、76%の精度にとどまってしまうことを示しています。というわけで実際の精度は90%ではなく、76%(もしくはテストデータで測った72%)ということになります。過学習を止めるには、層を厚くするとか、Dropoutを入れるとか、いろいろな方法があります。ここではそんなに高い精度は求めていないので、議論しません。</p>
 <p>Kerasでは<code>Early stopping</code>というメソッドが使えるので、これを使えば<code>val_loss</code>が増加に転じるところ、つまり最小値で学習を止めることができます。今回はデータを見ればそんなに学習させなくてもどこで止めるべきかわかるので使いませんでした。</p>
 <p>損失関数を見れば過学習がわかると言いましたが、もちろん精度を見てもわかります。</p>
-<p><strong>model accuracy</strong>
-右側のグラフを御覧ください。<code>val_acc</code>が途中から上昇を止めていますね。これも過学習が起きている証拠です。また<code>Early stopping</code>を用いる場合は、最大値になるところで止めれば良いことがわかりますね。</p>
+<h4 id="Model-Accuracy">Model Accuracy<a class="anchor-link" href="#Model-Accuracy">&#182;</a></h4><p>右側のグラフを御覧ください。<code>val_acc</code>が途中から上昇を止めていますね。これも過学習が起きている証拠です。また<code>Early stopping</code>を用いる場合は、最大値になるところで止めれば良いことがわかりますね。</p>
 <p><em>精度だけ見ると早とちりしそうだけど、損失関数もみてやればじっくり見れる気がする...</em></p>
 
 </div>
@@ -13435,8 +13439,7 @@ import dlt
 import os
 
 from keras.models import Sequential
-from keras.layers.convolutional import Convolution2D
-from keras.layers import Dense, Dropout, Activation, MaxPooling2D, Flatten
+from keras.layers import Dense, Dropout, Activation, Conv2D, MaxPooling2D, Flatten
 from keras.optimizers import rmsprop
 from keras.utils.np_utils import to_categorical
 
@@ -13486,18 +13489,18 @@ num_classes = 10
 model = Sequential()
 
 # CNN layer 1
-model.add(Convolution2D(32, (3, 3), padding='same',
+model.add(Conv2D(32, (3, 3), padding='same',
                  input_shape=X_train.shape[1:]))
 model.add(Activation('relu'))
-model.add(Convolution2D(32, (3, 3)))
+model.add(Conv2D(32, (3, 3)))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
 
 # CNN layer 2
-model.add(Convolution2D(64, (3, 3), padding='same'))
+model.add(Conv2D(64, (3, 3), padding='same'))
 model.add(Activation('relu'))
-model.add(Convolution2D(64, (3, 3)))
+model.add(Conv2D(64, (3, 3)))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
@@ -13542,20 +13545,20 @@ if not os.path.exists(folder):
 model.save(os.path.join(folder, 'my_model.h5'))
 
 # predicted probabilities for the test set
-Yp = model.predict(X_test)
-yp = np.argmax(Yp, axis=1)
+preds = model.predict(X_test)
+cls = model.predict_classes(X_test)
 
 # plot some test images along with the prediction
 for i in range(10):
     dlt.utils.plot_prediction(
-        Yp[i],
+        preds[i],
         data.test_images[i],
         data.test_labels[i],
         data.classes,
         fname=os.path.join(folder, 'test-%i.png' % i))
 
 # plot the confusion matrix
-dlt.utils.plot_confusion_matrix(data.test_labels, yp, data.classes,
+dlt.utils.plot_confusion_matrix(data.test_labels, cls, data.classes,
                                   title='confusion matrix',
                                   fname=os.path.join(folder, 'confusion matrix.png'))
 

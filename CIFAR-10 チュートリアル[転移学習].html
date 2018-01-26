@@ -12024,13 +12024,13 @@ div#notebook {
 # model
 model = Sequential()
 
-model.add(Convolution2D(
+model.add(Conv2D(
             32, 
             kernel_size=(3, 3), 
             padding='same',
             input_shape=(32,32,3)))
 model.add(Activation('relu'))
-model.add(Convolution2D(
+model.add(Conv2D(
             32, 
             kernel_size=(3, 3)))
 model.add(Activation('relu'))
@@ -12038,12 +12038,12 @@ model.add(MaxPooling2D(
             (2, 2)))
 model.add(Dropout(0.25))
 
-model.add(Convolution2D(
+model.add(Conv2D(
             64, 
             kernel_size=(3, 3), 
             padding='same'))
 model.add(Activation('relu'))
-model.add(Convolution2D(
+model.add(Conv2D(
             64, 
             kernel_size=(3, 3)))
 model.add(Activation('relu'))
@@ -12432,13 +12432,13 @@ None
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="s1">&#39;my_model_tl.h5&#39;</span><span class="p">))</span>
 
 <span class="c1"># predicted probabilities for the test set</span>
-<span class="n">Yp</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Yp</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="bp">cls</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_classes</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
 <span class="c1"># plot some test images along with the prediction</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">dlt</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plot_prediction</span><span class="p">(</span>
-        <span class="n">Yp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
         <span class="n">data</span><span class="o">.</span><span class="n">test_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
         <span class="n">data</span><span class="o">.</span><span class="n">test_labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
         <span class="n">data</span><span class="o">.</span><span class="n">classes</span><span class="p">,</span>

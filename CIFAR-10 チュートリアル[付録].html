@@ -11808,7 +11808,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">load_model</span>
@@ -11836,7 +11836,7 @@ div#notebook {
                 <span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">plot_image</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;☆テスト画像: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;☆テスト画像 (正解ラベル) : </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
@@ -11855,9 +11855,9 @@ div#notebook {
     <span class="c1"># output</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="c1"># modelは学習させたもの</span>
-    <span class="n">category</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">cls</span><span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_classes</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">true_label</span> <span class="o">=</span> <span class="n">category</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">true_label</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">cifar10_labels</span><span class="p">[</span><span class="n">true_label</span><span class="p">]</span>
         <span class="n">plot_image</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">labels</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> - 分類されたものは</span><span class="si">{1}</span><span class="s1">です。精度は</span><span class="si">{2:.2f}</span><span class="s1">%です。</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">true_label</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
@@ -11871,21 +11871,6 @@ div#notebook {
 <div class="output_wrapper">
 <div class="output">
 
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python3.6/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
-  from ._conv import register_converters as _register_converters
-Using TensorFlow backend.
-/usr/local/anaconda3/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module &#39;tensorflow.python.framework.fast_tensor_util&#39; does not match runtime version 3.6
-  return f(*args, **kwds)
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -13192,7 +13177,7 @@ height=250
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>ネットで拾ってきたような任意の画像でチェックしたいときは、以下のようにすればできます。ここでは
-<img src='car.png'/>
+<img src='images/car.png'/>
 from いらすとや</p>
 <p>を使います。</p>
 
@@ -13230,9 +13215,9 @@ from いらすとや</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">preprocess_input</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     
     <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># modelは学習させたもの</span>
-    <span class="n">category</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">cls</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_classes</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">preds</span><span class="p">,</span> <span class="n">category</span>
+    <span class="k">return</span> <span class="n">preds</span><span class="p">,</span> <span class="bp">cls</span>
 
 <span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">img_path</span> <span class="o">=</span> <span class="s1">&#39;images/car.png&#39;</span> <span class="c1"># 任意の画像</span>
@@ -13240,14 +13225,14 @@ from いらすとや</p>
     <span class="n">model_tl</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;results&#39;</span><span class="p">,</span><span class="s1">&#39;my_model_tl.h5&#39;</span><span class="p">))</span> <span class="c1"># 保存したモデルから読み込む</span>
 
 
-    <span class="n">_</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="n">image_to_array</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img_path</span><span class="p">)</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">category_tl</span> <span class="o">=</span> <span class="n">image_to_array</span><span class="p">(</span><span class="n">model_tl</span><span class="p">,</span> <span class="n">img_path</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="bp">cls</span> <span class="o">=</span> <span class="n">image_to_array</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img_path</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">cls_tl</span> <span class="o">=</span> <span class="n">image_to_array</span><span class="p">(</span><span class="n">model_tl</span><span class="p">,</span> <span class="n">img_path</span><span class="p">)</span>
 
-    <span class="n">classed</span> <span class="o">=</span> <span class="n">category</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">classed_tl</span> <span class="o">=</span> <span class="n">category_tl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">true_cls</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">true_cls_tl</span> <span class="o">=</span> <span class="n">cls_tl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;分類されたものは</span><span class="si">{0}</span><span class="s1">です。&#39;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cifar10_labels</span><span class="p">[</span><span class="n">classed</span><span class="p">]))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TL: 分類されたものは</span><span class="si">{0}</span><span class="s1">です。&#39;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cifar10_labels</span><span class="p">[</span><span class="n">classed_tl</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;分類されたものは</span><span class="si">{0}</span><span class="s1">です。&#39;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cifar10_labels</span><span class="p">[</span><span class="n">true_cls</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TL: 分類されたものは</span><span class="si">{0}</span><span class="s1">です。&#39;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cifar10_labels</span><span class="p">[</span><span class="n">true_cls_tl</span><span class="p">]))</span>
 </pre></div>
 
 </div>
@@ -13382,7 +13367,7 @@ TL: 分類されたものはtruckです。
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tb</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span>
@@ -13393,33 +13378,6 @@ TL: 分類されたものはtruckです。
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-0b15be74e051&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> tb = keras.callbacks.TensorBoard(
-</span><span class="ansi-green-intense-fg ansi-bold">      2</span>         log_dir<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#39;appendix_results/cifar10_tb&#39;</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span>         histogram_freq<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span>         write_graph<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>         write_images=False)
-
-<span class="ansi-red-fg">NameError</span>: name &#39;keras&#39; is not defined</pre>
-</div>
-</div>
-
 </div>
 </div>
 
